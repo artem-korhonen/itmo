@@ -1,0 +1,1 @@
+public record Room(int number, int floor, String feature, House house) {}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.LoginController"
+      alignment="CENTER" spacing="15">
+    
+    <!-- Username Row -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="%username" minWidth="70"/>
+        <TextField fx:id="usernameField" HBox.hgrow="ALWAYS"/>
+        <Label text="🌐" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+    <!-- Password Row -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="%password" minWidth="70"/>
+        <PasswordField fx:id="passwordField" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="%login" onAction="#onLogin"/>
+        <Button text="%register" onAction="#onRegister"/>
+    </HBox>
+</VBox>

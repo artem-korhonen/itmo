@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
+def javafxSdkPath = "/home/artem/ProgramFiles/openjfx-17.0.15_linux-x64_bin-sdk/javafx-sdk-17.0.15/lib"
+
+dependencies {
+    implementation project(':common')    // Добавим VM options, чтобы Java знала, где искать native библиотеки JavaFXn project(':common')
+
+    implementation files("${javafxSdkPath}/javafx.base.jar")
+    implementation files("${javafxSdkPath}/javafx.controls.jar")
+    implementation files("${javafxSdkPath}/javafx.graphics.jar")
+    implementation files("${javafxSdkPath}/javafx.fxml.jar")
+}
+
+application {
+    mainClass = 'Client'
+}
+
+run {
+    standardInput = System.in
+    standardOutput = System.out
+    errorOutput = System.err
+
+    jvmArgs = [
+        "--module-path", "${javafxSdkPath}",
+        "--add-modules", "javafx.controls,javafx.fxml"
+    ]
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': application.mainClass
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    dependsOn(":common:jar")
+}

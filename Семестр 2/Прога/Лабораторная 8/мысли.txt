@@ -1,0 +1,1 @@
+надо проставить new Response(List.of(), false, null) везде у команд, где возвращается null

@@ -1,0 +1,35 @@
+digraph {
+	rankdir=LR size=10
+	x1 [label=x1 shape=circle]
+	x2 [label=x2 shape=circle]
+	x3 [label=x3 shape=circle]
+	x4 [label=x4 shape=circle]
+	x5 [label=x5 shape=circle]
+	not_x2 [label="̅x2" shape=invtriangle]
+	not_x3 [label="̅x3" shape=invtriangle]
+	not_x4 [label="̅x4" shape=invtriangle]
+	not_x5 [label="̅x5" shape=invtriangle]
+	phi [label="ϕ = x1 ∨ ̅x3" shape=rectangle]
+	x1 -> phi
+	not_x3 -> phi
+	x3 -> not_x3
+	and1 [label="x4 ∨ ̅x2 ∨ ϕ" shape=rectangle]
+	x4 -> and1
+	not_x2 -> and1
+	phi -> and1
+	x2 -> not_x2
+	and2 [label="x2 ∨ ̅x4 ∨ x5 ∨ ϕ" shape=rectangle]
+	x2 -> and2
+	not_x4 -> and2
+	x5 -> and2
+	phi -> and2
+	x4 -> not_x4
+	and3 [label="̅x2 ∨ x5 ∨ ϕ" shape=rectangle]
+	not_x2 -> and3
+	x5 -> and3
+	phi -> and3
+	f [label=f shape=doublecircle]
+	and1 -> f
+	and2 -> f
+	and3 -> f
+}

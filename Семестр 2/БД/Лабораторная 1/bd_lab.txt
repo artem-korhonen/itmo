@@ -1,0 +1,169 @@
+Грант удивленно огляделся.
+Они оказались в небольшом помещении размером с маленькую кладовку.
+Все было заставлено какой-то техникой: неподвижными насосами, большими фильтрами с толстыми трубами.
+Все было холодным и мокрым.
+
+Инфологическая
+
+
+@startuml
+entity Human {
+  name
+  age
+  gender
+}
+
+entity Clothing {
+  name
+  brand
+  material
+  price
+}
+
+entity Explore_Buildings {
+}
+
+entity Building {
+  name
+  year
+  floors_count
+}
+
+entity Floor {
+  number
+  temperature
+  rooms_count
+}
+
+entity Room {
+  name
+  number
+  temperature
+  humidity
+}
+
+entity Machinery {
+  name
+  company
+  is_active
+}
+
+entity Furniture {
+  name
+  material
+  height
+}
+
+entity Plant {
+  name
+  height
+  alive
+}
+
+Human ||--o{ Explore_Buildings : explore
+Building ||--o{ Explore_Buildings : explore
+
+Clothing ||--o| Human : dress
+
+Floor ||--o{ Building : has
+Room ||--o{ Floor : has
+Machinery ||--o{ Room : has
+Furniture ||--o{ Room : has
+Plant ||--o{ Room : has
+@enduml
+
+
+Даталогическая
+
+
+@startuml
+entity Human {
+  human_id : SERIAL
+  --
+  name : VARCHAR(50)
+  age : INTEGER "age >= 0 and age <= 200"
+  gender : VARCHAR(50)
+}
+
+entity Clothing {
+  clothing_id : SERIAL
+  human_id : INTEGER
+  --
+  name : VARCHAR(50)
+  brand : VARCHAR(50)
+  material : VARCHAR(50)
+  price : INTEGER "price >= 0"
+}
+
+entity Explore_Buildings {
+  id : SERIAL
+  --
+  human_id : INTEGER
+  building_id : INTEGER
+  operation_code : VARCHAR(50) UNIQUE
+}
+
+entity Building {
+  building_id : SERIAL
+  --
+  name : VARCHAR(50)
+  year : INTEGER "year >= 0"
+  floors_count : INTEGER "floors_count > 0 and floors_count <= 1000"
+}
+
+entity Floor {
+  floor_id : SERIAL
+  building_id : INTEGER
+  --
+  number : INTEGER "NOT NULL"
+  temperature : NUMERIC(4,1) "temperature >= -273.15 and temperature <= 1000"
+  rooms_count : INTEGER "rooms_count >= 0 and rooms_count <= 1000"
+}
+
+entity Room {
+  room_id : SERIAL
+  floor_id : INTEGER
+  --
+  name : VARCHAR(50)
+  number : INTEGER "number >= 0"
+  temperature : NUMERIC(4,1) "temperature >= -273.15 and temperature <= 1000"
+  humidity : INTEGER "humidity >= 0 and humidity <= 100"
+}
+
+entity Machinery {
+  machinery_id : SERIAL
+  room_id : INTEGER
+  --
+  name : VARCHAR(50)
+  company : VARCHAR(50)
+  is_active : BOOLEAN
+  temperature : NUMERIC(4,1) "temperature >= -273.15 and temperature <= 1000"
+}
+
+entity Furniture {
+  furniture_id : SERIAL
+  room_id : INTEGER
+  --
+  name : VARCHAR(50)
+  material : VARCHAR(50)
+  height : FLOAT "height > 0 and height <= 10"
+}
+
+entity Plant {
+  plant_id : SERIAL
+  room_id : INTEGER
+  --
+  name : VARCHAR(50)
+  height : FLOAT "height > 0 and height <= 10"
+  alive : BOOLEAN
+}
+
+Explore_Buildings }o--|| Human : human_id  
+Explore_Buildings }o--|| Building : building_id  
+Human |o--|| Clothing : human_id  
+Floor }o--|| Building : building_id  
+Room }o--|| Floor : floor_id  
+Machinery }o--|| Room : room_id  
+Furniture }o--|| Room : room_id  
+Plant }o--|| Room : room_id
+@enduml

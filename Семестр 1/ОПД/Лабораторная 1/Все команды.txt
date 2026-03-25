@@ -1,0 +1,116 @@
+mkdir karrablast6 salamence2 sandshrew9
+touch burmy4 muk6 slowbro8
+
+echo Ходы Bug Bite electroweb Snore String Shot >> burmy4
+echo Способности Harden Mud-Slap Disable >> muk6
+echo Sludge Minimize Mud Bomb Sludge Bomb Fling Screech Sludge Wave Acid >> muk6
+echo Armor Gunk Shot Memento >> muk6
+echo weigth=173.1 height=63.0 atk=8 def=11 >> slowbro8
+
+cd karrablast6
+mkdir raichu gligar garbodor froslass cottonee
+touch mantine
+
+echo -e "Тип\nпокемона  WATER FLYING" >> mantine
+
+cd ../salamence2
+mkdir sharpedo omastar vibrava
+touch milotic seadra breloom
+
+echo Тип покемона  WATER NONE >> milotic
+echo -e "Тип\nдиеты Herbivore" >> seadra
+echo -e "Развитые способности Quick Feet\nTechnician" >> breloom
+
+cd ../sandshrew9
+mkdir sunflora cyndaquil rampardos
+
+cd ..
+
+
+chmod 764 karrablast6
+chmod ugo=wx salamence2
+chmod u+r salamence2
+chmod 573 sandshrew9
+chmod ugo-rwx burmy4
+chmod uo+r burmy4
+chmod 404 muk6
+chmod 440 slowbro8
+
+cd karrablast6
+chmod 361 raichu
+chmod 777 gligar
+chmod 764 garbodor
+chmod ugo=rwx froslass
+chmod u-w froslass
+chmod o-r froslass
+chmod 700 cottonee
+chmod 404 mantine
+
+cd ../salamence2
+chmod 764 sharpedo
+chmod ugo=wx omastar
+chmod g+r omastar
+chmod 305 vibrava
+chmod 666 milotic
+chmod 440 seadra
+chmod 046 breloom
+
+cd ../sandshrew9
+chmod 577 sunflora
+chmod 511 cyndaquil
+chmod 513 rampardos
+cd ..
+
+
+cat burmy4 >> salamence2/miloticburmy
+cat salamence2/breloom karrablast6/mantine >> muk6_21
+chmod 746 salamence2/breloom
+cat salamence2/breloom karrablast6/mantine >> muk6_21
+ln -s muk6 salamence2/miloticmuk
+cp -R salamence2 karrablast6/froslass
+chmod 773 karrablast6/froslass
+cp -R salamence2 karrablast6/froslass
+chmod 705 salamence2/vibrava
+chmod 773 salamence2/omastar
+cp -R salamence2 karrablast6/froslass
+chmod 740 karrablast6/froslass/salamence2/seadra
+cp -R salamence2 karrablast6/froslass
+cp slowbro8 karrablast6/froslass
+ln -s sandshrew9 Copy_11
+ln burmy4 salamence2/miloticburmy
+rm salamence2/miloticburmy
+ln burmy4 salamence2/miloticburmy
+
+chmod 046 salamence2/breloom
+chmod 573 karrablast6/froslass
+chmod 305 salamence2/vibrava
+chmod 373 salamence2/omastar
+
+
+wc -m slowbro8 > /tmp/result
+ls -lrRt | grep "ra" | grep -v “./” | tail -n 4
+chmod 777 karrablast6/raichu salamence2/omastar salamence2/vibrava
+ls -lrRt | grep "ra" | grep -v “./” | tail -n 4
+cat karrablast6/* | grep -iv "TE"
+cat karrablast6/* 2>&1 | grep -v "Is a directory" | grep -iv "TE"
+ls -lR 2>&1 | grep "[0-9][0-9]:[0-9][0-9] r" | sort -k 2 -r | head -n 2
+wc -l muk6 >> muk6
+chmod 777 muk6
+wc -l muk6 >> muk6
+cat burmy4 2>&1 | sort -f
+
+chmod 764 karrablast6/raichu 
+chmod 373 salamence2/omastar
+chmod 305 salamence2/vibrava
+chmod 404 muk6
+
+
+rm muk6
+rm karrablast6/mantine
+rm salamence2/miloticm*
+rm salamence2/miloticbur*
+rmdir karrablast6
+rm -R karrablast6
+chmod -R 777 karrablast6
+rm -R karrablast6
+rmdir karrablast6/raichu

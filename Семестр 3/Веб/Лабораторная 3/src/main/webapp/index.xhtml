@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <title>Основная страница</title>
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    </link>
+    <h:outputScript name="faces.js" library="jakarta.faces" target="head" />
+</h:head>
+
+<h:body>
+    <div class="container">
+        <table class="header-table">
+            <tr>
+                <td class="name">Корхонен Артём Андреевич</td>
+                <td class="isu">466298</td>
+                <td class="group">P3232</td>
+                <td class="labwork">Лабораторная №3</td>
+                <td class="variant">Вариант №93857</td>
+            </tr>
+        </table>
+
+        <table class="graph-table">
+            <tr>
+                <td>
+                    <svg id="graph-svg" width="400" height="400" viewBox="0 0 400 400">
+
+                        <!-- Четверть круга -->
+                        <circle id="circle" cx="200" cy="200" r="160" fill="cyan" stroke="black" />
+                        <polygon points="0,0 0,200 400,200 400,0" fill="white" stroke="white" />
+                        <polygon points="200,0 400,0 400,400 200,400" fill="white" stroke="white" />
+
+                        <!-- Прямоугольник -->
+                        <polygon id="rect" points="200,40 360,40 360,200 200,200" fill="cyan" stroke="black" />
+
+                        <!-- Треугольник -->
+                        <polygon id="triangle" points="40,200 200,200 200,40" fill="cyan" stroke="black" />
+
+                        <!-- Оси -->
+                        <line x1="200" y1="0" x2="200" y2="400" stroke="black" />
+                        <line x1="200" y1="0" x2="210" y2="10" stroke="black" />
+                        <line x1="200" y1="0" x2="190" y2="10" stroke="black" />
+
+                        <line x1="0" y1="200" x2="400" y2="200" stroke="black" />
+                        <line x1="400" y1="200" x2="390" y2="190" stroke="black" />
+                        <line x1="400" y1="200" x2="390" y2="210" stroke="black" />
+
+                        <!-- Чёрточки по X -->
+                        <line id="tick-x-mr" x1="40" y1="195" x2="40" y2="205" stroke="black" />
+                        <line id="tick-x-mr2" x1="120" y1="195" x2="120" y2="205" stroke="black" />
+                        <line id="tick-x-r2" x1="280" y1="195" x2="280" y2="205" stroke="black" />
+                        <line id="tick-x-r" x1="360" y1="195" x2="360" y2="205" stroke="black" />
+
+                        <!-- Чёрточки по Y -->
+                        <line id="tick-y-mr" x1="195" y1="40" x2="205" y2="40" stroke="black" />
+                        <line id="tick-y-mr2" x1="195" y1="120" x2="205" y2="120" stroke="black" />
+                        <line id="tick-y-r2" x1="195" y1="280" x2="205" y2="280" stroke="black" />
+                        <line id="tick-y-r" x1="195" y1="360" x2="205" y2="360" stroke="black" />
+
+                        <!-- Чёрточки 5 по X -->
+                        <line x1="40" y1="190" x2="40" y2="210" stroke="black" />
+                        <line x1="120" y1="190" x2="120" y2="210" stroke="black" />
+                        <line x1="280" y1="190" x2="280" y2="210" stroke="black" />
+                        <line x1="360" y1="190" x2="360" y2="210" stroke="black" />
+
+                        <!-- Чёрточки 5 по Y -->
+                        <line x1="195" y1="40" x2="205" y2="40" stroke="black" />
+                        <line x1="195" y1="120" x2="205" y2="120" stroke="black" />
+                        <line x1="195" y1="280" x2="205" y2="280" stroke="black" />
+                        <line x1="195" y1="360" x2="205" y2="360" stroke="black" />
+
+                        <!-- Подписи по X -->
+                        <text id="label-x-mr" x="40" y="220" font-size="10" text-anchor="middle">-R</text>
+                        <text id="label-x-mr2" x="120" y="220" font-size="10" text-anchor="middle">-R/2</text>
+                        <text id="label-x-r2" x="280" y="220" font-size="10" text-anchor="middle">R/2</text>
+                        <text id="label-x-r" x="360" y="220" font-size="10" text-anchor="middle">R</text>
+
+                        <!-- Подписи по Y -->
+                        <text id="label-y-mr" x="180" y="40" font-size="10" alignment-baseline="middle">R</text>
+                        <text id="label-y-mr2" x="175" y="120" font-size="10" alignment-baseline="middle">R/2</text>
+                        <text id="label-y-r2" x="180" y="280" font-size="10" alignment-baseline="middle">-R/2</text>
+                        <text id="label-y-r" x="175" y="360" font-size="10" alignment-baseline="middle">-R</text>
+
+                        <!-- Подписи 5 по X -->
+                        <text x="40" y="185" font-size="10" text-anchor="middle">-5</text>
+                        <text x="120" y="185" font-size="10" text-anchor="middle">-2.5</text>
+                        <text x="280" y="185" font-size="10" text-anchor="middle">2.5</text>
+                        <text x="360" y="185" font-size="10" text-anchor="middle">5</text>
+
+                        <!-- Подписи 5 по Y -->
+                        <text x="215" y="40" font-size="10" alignment-baseline="middle">5</text>
+                        <text x="215" y="120" font-size="10" alignment-baseline="middle">2.5</text>
+                        <text x="215" y="280" font-size="10" alignment-baseline="middle">-2.5</text>
+                        <text x="215" y="360" font-size="10" alignment-baseline="middle">-5</text>
+
+                        <!-- Площадь клика -->
+                        <polygon id="rect-click" points="72,104 328,104 328,360 72,360" fill="red" opacity="0.2" />
+                    </svg>
+                </td>
+            </tr>
+        </table>
+
+        <h:form id="mainForm" prependId="false">
+            <table class="options-table">
+                <!-- X -->
+                <tr>
+                    <td class="change-x-label">Изменение X</td>
+                </tr>
+                <tr>
+                    <td class="change-x" id="changeX">
+                        <h:commandLink value="-4" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="-4" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="-4" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="-3" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="-3" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="-3" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="-2" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="-2" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="-2" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="-1" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="-1" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="-1" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="0" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="0" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="0" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="1" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="1" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="1" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="2" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="2" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="2" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="3" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="3" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="3" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                        <h:commandLink value="4" styleClass="button">
+                            <f:passThroughAttribute name="data-x" value="4" />
+                            <f:setPropertyActionListener target="#{pageManagerBean.x}" value="4" />
+                            <f:ajax execute="@this" render="error-x" />
+                        </h:commandLink>
+                    </td>
+                </tr>
+
+                <tr id="error-x" class="hidden">
+                    <td>
+                        <label class="error-label">Отсутствует x</label>
+                    </td>
+                </tr>
+
+                <!-- Y -->
+                <tr>
+                    <td class="change-y-label">Изменение Y</td>
+                </tr>
+
+                <tr class="change-y">
+                    <td>
+                        <h:inputText id="changeY" value="#{pageManagerBean.y}" pt:step="0.0000000001" />
+                    </td>
+                </tr>
+
+                <tr id="error-y" class="hidden">
+                    <td>
+                        <label id="error-y-label" class="error-label">Отсутствует y</label>
+                    </td>
+                </tr>
+
+                <!-- R -->
+                <tr>
+                    <td class="change-r-label">Изменение R</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:selectOneMenu id="changeR" value="#{pageManagerBean.r}">
+                            <f:selectItem itemValue="1" itemLabel="1" />
+                            <f:selectItem itemValue="2" itemLabel="2" />
+                            <f:selectItem itemValue="3" itemLabel="3" />
+                            <f:selectItem itemValue="4" itemLabel="4" />
+                            <f:selectItem itemValue="5" itemLabel="5" />
+                            <f:ajax execute="@this" render="error-r" onevent="afterSelectR" />
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+
+                <tr id="error-r" class="hidden">
+                    <td>
+                        <label class="error-label">Отсутствует r</label>
+                    </td>
+                </tr>
+
+                <h:inputHidden id="hitValue" value="#{pageManagerBean.hit}" />
+
+                <tr>
+                    <td>
+                        <h:commandButton id="sendButton" value="Send" action="#{pageManagerBean.addPoint}"
+                            onclick="return validateForm();">
+                            <f:ajax execute="@form" render=":resultsForm:results hitValue" onevent="afterSend" />
+                        </h:commandButton>
+
+                        <h:commandButton id="updateButton" class="hidden" value="Обновить таблицу" action="#{resultsManagerBean.updatePoints}">
+                            <f:ajax execute="@form" render=":resultsForm:results graph-svg" onevent="afterUpdate" />
+                        </h:commandButton>
+                    </td>
+                </tr>
+
+                <tr id="error-main" class="hidden">
+                    <td>
+                        <label id="error-main-label" class="error-label">Ошибка</label>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+
+        <!-- Результаты -->
+        <h:form id="resultsForm">
+            <div class="results-container">
+                <h:dataTable value="#{resultsManagerBean.points}" class="results-table" var="p" id="results"
+                    pt:data-group="results">
+                    <h:column>
+                        <f:facet name="header">x</f:facet>
+                        #{p.x}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">y</f:facet>
+                        <h:outputText value="#{p.y}" converter="bigDecimalConverter" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">r</f:facet>
+                        #{p.r}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">result</f:facet>
+                        #{p.hit ? 'Попал' : 'Мимо'}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">current time</f:facet>
+                        <h:outputText value="#{p.currentTime}" converter="localDateTimeConverter" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">request time (ms)</f:facet>
+                        #{p.requestTimeMs}
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </h:form>
+        
+
+        <h:button value="Перейти к часам" outcome="start" styleClass="button outside" />
+    </div>
+
+    <h:outputScript library="js" name="script.js" />
+</h:body>
+
+</html>

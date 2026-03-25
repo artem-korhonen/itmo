@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    // providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    providedCompile 'javax:javaee-api:8.0.1'
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.12'
+
+    implementation 'com.h2database:h2:2.2.224'
+
+    // implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:4.0.2'
+    // implementation 'org.eclipse.persistence:org.eclipse.persistence.core:4.0.2'
+
+    // implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    // implementation 'com.fasterxml.jackson.core:jackson-core:2.15.2'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.5'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.5'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+war {
+    archiveFileName = "${rootProject.name}.war"
+}

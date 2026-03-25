@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+              version="2.2">
+
+    <!-- Правила навигации -->
+    <navigation-rule>
+        <from-view-id>/start.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>to-index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>to-start</from-outcome>
+            <to-view-id>/start.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- Регистрация бинов -->
+    <managed-bean>
+        <managed-bean-name>resultsManagerBean</managed-bean-name>
+        <managed-bean-class>beans.ResultsManagerBean</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>pageManagerBean</managed-bean-name>
+        <managed-bean-class>beans.PageManagerBean</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+        <managed-property>
+            <property-name>resultsManagerBean</property-name>
+            <value>#{resultsManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Регистрация конвертеров -->
+    <converter>
+        <converter-id>bigDecimalConverter</converter-id>
+        <converter-class>converters.BigDecimalConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>localDateTimeConverter</converter-id>
+        <converter-class>converters.LocalDateTimeConverter</converter-class>
+    </converter>
+
+</faces-config>

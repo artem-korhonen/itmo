@@ -1,0 +1,143 @@
+@startuml
+
+
+package attacks {
+    abstract class Move {
+        +applyOppEffects(Pokemon p)
+    }
+
+    abstract class DamageMove extends Move {
+        +applyOppEffects(Pokemon p)
+        +applyOppDamage(Pokemon p, double damage)
+        +applySelfDamage(Pokemon p, double damage)
+    }
+
+    class PhysicalMove extends DamageMove {
+        +applyOppEffects(Pokemon p)
+        +applyOppDamage(Pokemon p, double damage)
+        +applySelfDamage(Pokemon p, double damage)
+    }
+
+    class SpecialMove extends DamageMove {
+        +applyOppEffects(Pokemon p)
+        +applyOppDamage(Pokemon p, double damage)
+        +applySelfDamage(Pokemon p, double damage)
+    }
+
+    class StatusMove extends Move {
+        +applyOppEffects(Pokemon p)
+    }
+
+    class Confide extends StatusMove {
+        +Confide()
+        +applyOppEffects(Pokemon p)
+    }
+
+    class DazzlingGleam extends SpecialMove {
+        +DazzlingGleam()
+    }
+
+    class Discharge extends SpecialMove {
+        +Discharge()
+        +applyOppEffects(Pokemon p)
+    }
+
+    class Facade extends PhysicalMove {
+        +Facade()
+        +applyOppDamage()
+    }
+
+    class Inferno extends SpecialMove {
+        +Inferno()
+        +applyOppEffects()
+    }
+
+    class RockTomb extends PhysicalMove {
+        +RockTomb()
+        +applyOppEffects()
+    }
+
+    class SearingShot extends SpecialMove {
+        +SearingShot()
+        +applyOppEffects()
+    }
+
+    class StoneEdge extends PhysicalMove {
+        +StoneEdge()
+    }
+
+    class Thunderbolt extends SpecialMove {
+        +Thunderbolt()
+        +applyOppEffects()
+    }
+
+    class ThunderShock extends SpecialMove {
+        +ThunderShock()
+        +applyOppEffects()
+    }
+
+    class WildCharge extends PhysicalMove {
+        +WildCharge()
+        +applySelfDamage()
+    }
+
+    class ZenHeadbutt extends PhysicalMove {
+        +ZenHeadbutt()
+        +applyOppEffects()
+    }
+
+}
+
+
+package pokemons {
+    class Pokemon {
+        +String name
+        +int level
+        +setType()
+        +setStats()
+        +setMove()
+        +addMove()
+    }
+
+    class Mankey extends Pokemon {
+        +Mankey(String name, int level)
+        +setType()
+        +setStats()
+        +setMove()
+    }
+
+    class Primeape extends Mankey {
+        +Primeape(String name, int level)
+        +setStats()
+        +addMove()
+    }
+
+    class Pichu extends Pokemon {
+        +Pichu(String name, int level)
+        +setType()
+        +setStats()
+        +setMove()
+    }
+
+    class Pikachu extends Pichu {
+        +Pikachu(String name, int level)
+        +setStats()
+        +addMove()
+    }
+
+    class Raichu extends Pikachu {
+        +Raichu(String name, int level)
+        +setStats()
+        +addMove()
+    }
+
+    class Victini extends Pokemon {
+        +Victini(String name, int level)
+        +setType()
+        +setStats()
+        +setMove()
+    }
+}
+
+
+@enduml

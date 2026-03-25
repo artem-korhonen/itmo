@@ -1,0 +1,58 @@
+// Логическая схема
+digraph {
+	X1 [label=X1]
+	X2 [label=X2]
+	X3 [label=X3]
+	X4 [label=X4]
+	X5 [label=X5]
+	NOT_X1 [label=NOT]
+	NOT_X2 [label=NOT]
+	NOT_X3 [label=NOT]
+	NOT_X4 [label=NOT]
+	NOT_X5 [label=NOT]
+	AND1 [label=AND]
+	AND2 [label=AND]
+	AND3 [label=AND]
+	AND4 [label=AND]
+	OR1 [label=OR]
+	OR2 [label=OR]
+	OR3 [label=OR]
+	OR4 [label=OR]
+	X1 -> NOT_X1
+	X2 -> NOT_X2
+	X3 -> NOT_X3
+	X4 -> NOT_X4
+	X5 -> NOT_X5
+	X1 -> AND1
+	NOT_X4 -> AND1
+	NOT_X1 -> OR1
+	X4 -> OR1
+	X1 -> OR2
+	X2 -> OR2
+	X4 -> AND2
+	NOT_X5 -> AND2
+	NOT_X4 -> AND3
+	X5 -> AND3
+	AND2 -> OR2
+	AND3 -> OR2
+	NOT_X2 -> OR3
+	NOT_X5 -> OR3
+	AND1 -> OR3
+	NOT_X1 -> AND4
+	X4 -> AND4
+	AND4 -> OR3
+	OR1 -> OR4
+	X5 -> OR4
+	NOT_X2 -> AND5
+	NOT_X3 -> AND5
+	AND5 -> OR4
+	OR1 -> OR5
+	NOT_X3 -> OR5
+	AND_FINAL [label=AND]
+	OR2 -> AND_FINAL
+	OR3 -> AND_FINAL
+	OR4 -> AND_FINAL
+	OR5 -> AND_FINAL
+	F [label=F]
+	AND_FINAL -> F
+}

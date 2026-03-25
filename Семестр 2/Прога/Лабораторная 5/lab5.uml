@@ -1,0 +1,192 @@
+@startuml
+left to right direction
+
+package commands {
+    class Command {
+        +String name
+        +String description
+        +getName()
+        +getDescription()
+        +execute(String[] args)
+    }
+
+    class ClearCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class ExecuteScriptCommand extends Command {
+        +CommandManager commandManager 
+    }
+
+    class ExitCommand extends Command {
+        +Console console 
+    }
+
+    class FilterGreaterThanTimezoneCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class HelpCommand extends Command {
+    }
+
+    class InfoCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class InsertCommand extends Command {
+        +CollectionManager collectionManager 
+        +Console console 
+    }
+
+    class PrintFieldDescendingGovernorCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class PrintUniqueGovernorCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class RemoveGreaterCommand extends Command {
+        +CollectionManager collectionManager 
+        +Console console 
+    }
+
+    class RemoveKeyCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class RemoveLowerKeyCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class ReplaceIfGreaterCommand extends Command {
+        +CollectionManager collectionManager 
+        +Console console 
+    }
+
+    class SaveCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class ShowCommand extends Command {
+        +CollectionManager collectionManager 
+    }
+
+    class UpdateCommand extends Command {
+        +CollectionManager collectionManager 
+        +Console console 
+    }
+}
+
+package data {
+    class City {
+        +Integer id
+        +String name
+        +Coordinates coordinates
+        +LocalDate creationDate
+        +int area
+        +Integer population
+        +Double metersAboveSeaLevel
+        +Float timezone
+        +long populationDensity
+        +Government government
+        +Human governor
+        +getId()
+        +getName()
+        +getCoordinates()
+        +getCreationDate()
+        +getArea()
+        +getPopulation()
+        +getMetersAboveSeaLevel()
+        +getTimezone()
+        +getPopulationDensity()
+        +getGovernment()
+        +getGovernor()
+    }
+
+    class Coordinates {
+        +float x
+        +Long y
+        +getX()
+        +getY()
+    }
+
+    enum Government {
+        PUPPET_STATE,
+        MERITOCRACY
+        PATRIARCHY
+        THALASSOCRACY
+        ETHNOCRACY
+    }
+
+    class Human {
+        +String name
+        +Integer age
+        +Integer height
+        +LocalDate birthday
+        +getName()
+        +getAge()
+        +getHeight()
+        +getBirthday()
+    }
+}
+
+package exceptions {
+    class StringConvertException extends Exception {
+    }
+}
+
+package main {
+    class CollectionManager {
+        +Hashtable<Integer, City> cities
+        +LocalDateTime initializeDate
+        +CsvConverter csvConverter
+        +getCollection()
+        +getCollectionClass()
+        +getCollectionSize()
+        +getCollectionInitializeDate()
+        +getGovernors()
+        +addToCollection(City city)
+        +updateCollection(Integer id, City city)
+        +removeElementsCollection(List<Integer> citiesIds)
+        +removeElementCollection(Integer id)
+        +clearCollection()
+        +saveCollection()
+    }
+
+    class CommandManager {
+        +Hashtable<String, Command> commands
+        +CollectionManager collectionManager
+        +Console console
+        +executeCommand(String input)
+    }
+
+    class Console {
+        +Scanner scanner
+        +boolean active
+        +startConsole(CommandManager commandManager)
+        +breakConsole()
+        +oneInput(String message, Class<T> type)
+        +oneInput(String message, Class<T> type, T min, T max, boolean strictMin, boolean strictMax)
+        +cityInput(Integer id)
+    }
+
+    class CsvConverter {
+        +String filePath
+        +csvFileToCities(CollectionManager collectionManager)
+        +CitiesToCsvFile(Hashtable<Integer, City> cities)
+    }
+
+    class IdGenerator {
+        +static Integer newId
+        +static generateId()
+    }
+
+    class StringConverter {
+        +static convertString(input: String, type: Class<T>)
+    }
+}
+
+class Main {
+}
+@enduml

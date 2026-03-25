@@ -1,0 +1,89 @@
+@startuml
+class Exception {
+    +Exception()
+}
+
+
+class AddressException extends Exception {
+    +AddressException()
+}
+
+
+enum Talent {
+    MUSICIAN
+    WRITER
+    ARTIST
+    ACTOR
+    SINGER
+}
+
+interface Repairable {
+    +repair(String subject)
+}
+
+
+abstract Person {
+    +String name
+    +City city
+    +changeCity(City city)
+}
+
+
+class OrdinaryPerson extends Person {
+    +String name
+    +String desire
+    +City city
+    +changeDesire(new_desire)
+    +findOut(String information)
+}
+
+
+class UniquePerson extends Person {
+    +String name
+    +Talent talent
+    +City city
+    +Street street
+    +House house
+    +Room room
+    +UniquePerson(String name, Talent talent, City city, Street street, House house, Room room)
+    +changeStreet(Street street)
+    +changeHouse(House house)
+    +changeRoom(Room room)
+    +seeAction(String action)
+    +getInterested(String object)
+}
+
+
+class City {
+    +String name
+    +int citizenCount
+    +Street[] streets
+    +City(String name, int citizenCount, Street[] streets)
+    +addCitizen(String name)
+}
+
+
+class Street implements Repairable {
+    +String name
+    +City city
+    +House[] houses
+    +repair(String subject)
+}
+
+
+class House implements Repairable {
+    +int number
+    +int floors
+    +Street street
+    +String feature
+    +repair(String subject)
+}
+
+
+class Room << (R,red) >> {
+    +int number
+    +int floor
+    +String feature
+    +House house
+}
+@enduml
